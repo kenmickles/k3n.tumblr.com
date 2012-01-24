@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      {block:SearchPage}{lang:Search results for SearchQuery} |{/block:SearchPage}
+      {block:PostSummary}{PostSummary} |{/block:PostSummary}
+      {Title}
+    </title>
+    
+    <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+    <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+    <!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+    <!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+    <!--[if (gt IE 9)|!(IE)]> <html lang="en" class="no-js"> <![endif]-->   
+    
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link rel="shortcut icon" href="{Favicon}" />
+    <link rel="apple-touch-icon" href="{PortraitURL-128}"/>
+    <link rel="alternate" type="application/rss+xml" href="{RSS}" />    
+    <script type="text/javascript" src="http://use.typekit.com/qap4wbl.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $.each($('div.post.video iframe'), function(i, iframe){
+        var $iframe = $(iframe);
+        var width = 720;
+        var height = (width / $iframe.width()) * $iframe.height();
+        $iframe.attr({width: width, height: height});
+      });      
+    });
+    </script>
+    <style type="text/css" href="https://raw.github.com/necolas/normalize.css/master/normalize.css"></style>
+    <style type="text/css">
+    body {
+      font: 18px "museo-slab", "HelveticaNeue","Helvetica Neue","Helvetica Neue",sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #404040;
+      background-color: #fff;
+    }
+
+    a {
+      color: #0069D6;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #00438a;
+      text-decoration: underline;
+    }
+    
+    a img {
+      border: 0;
+    }
+
+    header {
+      background-color: #EDEDED;
+      border-bottom: 1px solid #DCDCDC;
+      box-shadow: 0 20px 20px #fff;
+      padding: 12px 24px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 22px;
+    }
+
+    header h1 {
+      font-size: 1em;
+      margin: 0;
+      padding: 0;
+      float: left;
+    }
+
+    header a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    header a:hover {
+      color: #666;
+      text-decoration: none;
+    }
+
+    header nav {
+      float: left;
+      font-size: .82em;
+      line-height: 22px;
+      margin-left: 1em;
+    }
+    
+    header nav a {
+      margin-left: 1em;
+    }
+    
+    footer nav {
+      height: 1em;
+      margin: 2em .25em;
+      font-weight: bold;
+    }
+    
+    footer nav .prev {
+      float: left;
+    }
+    
+    footer nav .next {
+      float: right;
+    }
+
+    #wrapper {
+      width: 720px;
+      margin: 1em auto;
+    }
+
+    .post {
+      margin-top: 5em;
+    }
+    
+    .post img {
+      max-width: 100%;
+    }
+
+    .post h2 {
+      font-size: 1.4em;
+      color: #333;
+      margin-bottom: -.25em;
+    }
+
+    .post h2 a {
+      color: #333;
+    }
+
+    .post h2 a:hover {
+      color: #666;
+      text-decoration: none;
+    }
+
+    .post p {
+      line-height: 1.33em;
+    }
+    
+    .post blockquote {
+      border-left: .25em solid #DCDCDC;
+      padding-left: .5em;
+      font-style: italic;
+      color: #999;
+    }
+
+    .post .meta {
+      color: #999;
+      font-size: .75em;
+      border-top: 1px solid #DCDCDC;
+      height: 1em;
+      padding: .25em 0;
+    }
+
+    .post .meta .date {
+      float: left;
+      margin-right: 1em;
+    }
+    
+    .post .meta .date a {
+      color: #999;
+    }
+
+    .post .meta .tags {
+      float: right;
+    }
+
+    .post .meta .tags a {
+      margin-left: .5em;
+    }
+
+    .post.video h2,
+    .post.video .caption p:nth-child(1) {
+      margin: .5em 0 .05em 0;
+      font-size: 1.4em;
+      color: #333;      
+    }
+
+    .post.video .caption p:nth-child(2) {
+      margin: 0;
+      line-height: 1.4em;
+    }
+
+    .post.photo img,
+    .post.text img {
+      border-radius: 2px;
+      box-shadow: 0 0 8px #999;
+    }
+
+    .post.link h2 a {
+      color: #0069D6;
+      text-decoration: none;
+    }
+
+    .post.link h2 a:hover {
+      color: #00438a;
+      text-decoration: underline;
+    }
+    
+    .post.quote blockquote {
+      font-size: 1.5em;
+      margin-left: 0;
+    }
+    
+    ol.notes {
+      font-size: .86em;
+      color: #999;
+      margin: 3em 0 0 0;
+      padding: 0 .25em;
+    }
+    
+    ol.notes li {
+      line-height: 2em;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    #disqus_thread {
+      margin-top: 3em;
+    }
+    </style>
+  </head>
+  <body class="{block:IndexPage}index{/block:IndexPage} {block:PermalinkPage}{block:Posts}post {PostType} {TagsAsClasses}{/block:Posts}{/block:PermalinkPage}">
+    
+    <header>
+      <h1><a href="/">{Title}</a></h1>
+      <nav>
+        <a href="/about">about</a>
+        <a href="/archive">archive</a>
+        <a href="/rss">rss</a>
+        <a href="/tagged/366movies">366 movies</a>
+      </nav>
+    </header>
+    
+    <div id="wrapper">
+
+      {block:Posts}
+        <div class="post {PostType} {block:Photoset}photoset{/block:Photoset} {TagsAsClasses} {block:Odd}odd{/block:Odd} {block:Even}even{/block:Even}">
+          
+          {block:Photo}
+            {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" />{LinkCloseTag}
+            {block:Caption}
+              <div class="caption">{Caption}</div>
+            {/block:Caption}
+          {/block:Photo}
+          
+          {block:Photoset}
+            {Photoset-500}
+            {block:Caption}
+              <div class="caption">{Caption}</div>
+            {/block:Caption}
+          {/block:Photoset}           
+      
+          {block:Text}
+            {block:IndexPage}
+              {block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+            {/block:IndexPage}
+            {block:PermalinkPage}
+              <h2>{Title}</h2>
+            {/block:PermalinkPage}
+            <div class="body">{Body}</div>          
+          {/block:Text}
+    
+          {block:Link}
+            <h2><a href="{URL}">{Name} ➜</a></h2>
+            {block:Description}
+              <div class="caption">{Description}</div>
+            {/block:Description}
+          {/block:Link}
+    
+          {block:Video}
+            {Video-500}
+            {block:Caption}
+              <div class="caption">{Caption}</div>
+            {/block:Caption}
+          {/block:Video}
+
+          {block:Audio}
+            {AudioPlayerGrey}
+            {block:Caption}
+              <div class="caption">{Caption}</div>
+            {/block:Caption}
+          {/block:Audio}            
+    
+          {block:Quote}
+            <blockquote>{Quote}</blockquote>
+            {block:Source}
+              <p class="source"><em>&mdash;{Source}</em></p>
+            {/block:Source}
+          {/block:Quote}
+    
+          {block:Chat}
+            {block:IndexPage}
+              {block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+            {/block:IndexPage}
+            {block:PermalinkPage}
+              <h2>{Title}</h2>
+            {/block:PermalinkPage}
+            <div class="lines">
+              {block:Lines}
+                <p class="{Alt} user_{UserNumber}">
+                  {block:Label}<label>{Label}</label>{/block:label}
+                  {Line}
+                </p>
+              {/block:Lines}
+            </div>
+          {/block:Chat}
+    
+          {block:Answer}
+          {/block:Answer}
+          
+          {block:Date}
+            <p class="meta">
+              <span class="date">
+                {block:IndexPage}
+                  <a class="permalink" href="{Permalink}"><strong>∞</strong>&nbsp; {ShortDayOfWeek}, {Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}</a>
+                  {block:NoteCount}
+                    &nbsp;&nbsp;•&nbsp;&nbsp;                
+                    <a href="{Permalink}">{NoteCountWithLabel}</a>
+                  {/block:NoteCount}
+                {/block:IndexPage}
+                {block:PermalinkPage}
+                  {ShortDayOfWeek}, {Month} {DayOfMonth}{DayOfMonthSuffix}, {Year}
+                {/block:PermalinkPage}
+              </span>
+              {block:HasTags}
+                <span class="tags">
+                  {block:Tags}<a href="{TagURL}">#{Tag}</a> {/block:Tags}
+                </span>
+              {/block:HasTags}
+            </p>
+          {/block:Date}
+          
+        </div>
+      {/block:Posts}
+      
+      {block:PostNotes} 
+        {PostNotes}
+      {/block:PostNotes}
+      
+      {block:PermalinkPage}
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'k3n'; 
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+      {/block:PermalinkPage}
+      
+      <!-- Pagination -->
+      <footer>
+        <nav>
+          {block:PreviousPage}
+            <a class="prev" href="{PreviousPage}">&larr; Previous</a>
+          {/block:PreviousPage}
+
+          {block:NextPage}
+            <a class="next" href="{NextPage}">Next &rarr;</a>
+          {/block:NextPage}
+        </nav>
+      </footer>
+                
+    </div>
+  </body>
+</html>
