@@ -24,12 +24,24 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
+      // make videos full size
       $.each($('div.post.video iframe'), function(i, iframe){
         var $iframe = $(iframe);
         var width = 720;
         var height = (width / $iframe.width()) * $iframe.height();
         $iframe.attr({width: width, height: height});
-      });      
+      });
+      
+      // totally obnoxious way of allowing quote sources to contain html or not
+      $.each($('div.post.quote .source'), function(i, div){
+        var $div = $(div);
+        if ( $div.find('p').length > 0 ) {
+          $div.find('p:first').prepend('&mdash;');
+        }
+        else {
+          $div.prepend('&mdash;');
+        }
+      });
     });
     </script>
     <style type="text/css" href="https://raw.github.com/necolas/normalize.css/master/normalize.css"></style>
@@ -205,6 +217,18 @@
     div.post.quote blockquote {
       font-size: 1.5em;
       margin-left: 0;
+    }
+    
+    div.post.quote .source {
+      font-style: italic;
+    }
+    
+    div.post.quote .source p {
+      font-style: normal;
+    }
+    
+    div.post.quote .source > p:nth-child(1) {
+      font-style: italic;
     }
     
     ol.notes {
